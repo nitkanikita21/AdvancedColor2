@@ -1,0 +1,68 @@
+
+plugins {
+    id 'java'
+    id 'net.minecrell.plugin-yml.bukkit' version '0.5.1'
+}
+
+group 'com.nitkanikita.advancedcolor2.plugins'
+version '1.0-BETA'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        // As of Gradle 5.1, you can limit this to only those
+        // dependencies you expect from it
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    mavenLocal()
+}
+
+dependencies {
+    library 'com.google.code.gson:gson:2.8.7'
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+
+    compileOnly(project(":AdvancedColor2-api"))
+
+}
+
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    destinationDir = file(System.getenv("BUILD_PATH") == null ? './output' : System.getenv("BUILD_PATH"))
+    baseName = 'AdvancedColor2'
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+bukkit {
+    name = 'AdvancedColor2'
+    main = 'com.nitkanikita.advancedcolor2.spigot.SpigotMain'
+    apiVersion = '1.16'
+    prefix = 'AdvancedColor2'
+
+    authors = ['NitkaNikita']
+
+    commands {
+        register("advancedcolor2") {
+            description = 'Main plugin command'
+            permission = 'advancedcolor2.commands'
+            aliases = ['ac2']
+        }
+    }
+}

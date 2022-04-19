@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.nitkanikita.advancedcolor2'
+version '2.1-BETA'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    compileOnly 'org.jetbrains:annotations:23.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}
