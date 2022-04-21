@@ -29,9 +29,6 @@ repositories {
 dependencies {
     library 'com.google.code.gson:gson:2.8.7'
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
-    compileOnly 'com.github.nitkanikita21:AdvancedColor2:master-SNAPSHOT'
-
-
 }
 
 
