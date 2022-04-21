@@ -41,9 +41,6 @@ test {
 jar {
     destinationDir = file(System.getenv("BUILD_PATH") == null ? './output' : System.getenv("BUILD_PATH"))
     baseName = 'AdvancedColor2'
-    from {
-        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
-    }
 }
 
 tasks.withType(JavaCompile) {

@@ -1,5 +1,6 @@
 package com.nitkanikita.advancedcolor2.spigot;
 
+import com.nitkanikita.advancedcolor2.api.CustomCharacter;
 import com.nitkanikita.advancedcolor2.api.CustomColor;
 import com.nitkanikita.advancedcolor2.api.CustomText;
 import com.nitkanikita.advancedcolor2.api.builders.GradientTextBuilder;
@@ -21,7 +22,7 @@ public class SpigotMain extends JavaPlugin {
         getCommand("advancedcolor2").setExecutor((sender, command, label, args) -> {
 
             String minecraftString = GradientTextBuilder.get()
-                    .addText(CustomText.text("Hello! Its my cool text. Do you like my gradient?"))
+                    .addText(CustomText.text("Hello! Its my cool text. Do you like my gradient?", CustomCharacter.Code.ITALIC.bit() | CustomCharacter.Code.BOLD.bit()))
                     .addColor(CustomColor.of(Color.MAGENTA))
                     .addColor(CustomColor.of(Color.GREEN))
                     .addColor(CustomColor.of(Color.BLUE))
