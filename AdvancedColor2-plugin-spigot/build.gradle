@@ -4,12 +4,11 @@ plugins {
     id 'net.minecrell.plugin-yml.bukkit' version '0.5.1'
 }
 
-group 'com.nitkanikita.advancedcolor2.plugins'
+group 'com.nitkanikita.advancedcolor2'
 version '1.0-BETA'
 
 repositories {
     mavenCentral()
-    maven { url = 'https://jitpack.io/' }
 
     maven {
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
