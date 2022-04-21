@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.nitkanikita'
+group = 'com.nitkanikita.advancedcolor2'
 version '1.0-SNAPSHOT'
 
 subprojects {
