@@ -9,6 +9,7 @@ version '1.0-BETA'
 
 repositories {
     mavenCentral()
+    maven { url = 'https://jitpack.io/' }
 
     maven {
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
@@ -28,8 +29,8 @@ repositories {
 dependencies {
     library 'com.google.code.gson:gson:2.8.7'
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'com.github.nitkanikita21:AdvancedColor2:1.0-SNAPSHOT'
 
-    compileOnly(project(":AdvancedColor2-api"))
 
 }
 

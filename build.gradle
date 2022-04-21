@@ -69,12 +69,6 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
-var path = file("D:\\CODING\\Servers\\paper1.18.1\\plugins")
-
-jar{
-    destinationDir = path;
-}
-
 compileJava.options.encoding = 'UTF-8'
 
 tasks.withType(JavaCompile) {
