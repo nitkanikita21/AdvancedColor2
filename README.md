@@ -7,12 +7,12 @@ Library for working with gradients and colors in minecraft.
 Gradle:
 ```
 repositories {
-			maven { url 'https://jitpack.io' }
+    maven { url 'https://jitpack.io' }
 }
 ```
 ```
 dependencies {
-      implementation 'com.github.nitkanikita21:AdvancedColor2:Tag'
+    implementation 'com.github.nitkanikita21:AdvancedColor2:Tag'
 }
 ```
 
