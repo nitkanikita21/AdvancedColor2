@@ -1,0 +1,23 @@
+# bukkit {
+#   name = 'AdvancedColor2'
+#   main = 'com.nitkanikita.advancedcolor2.spigot.SpigotMain'
+#   apiVersion = '1.16'
+#   prefix = 'AdvancedColor2'
+#   authors = ['NitkaNikita']
+#   commands {
+#   register("advancedcolor2") {
+#   description = 'Main plugin command'
+#   permission = 'advancedcolor2.commands'
+#   aliases = ['ac2']
+#   }
+#   }
+# }
+name: "AdvancedColor2"
+main: "com.nitkanikita.advancedcolor2.spigot.SpigotMain"
+apiVersion: "1.16"
+authors: ["NitkaNikita"]
+commands:
+  advancedcolor2:
+    description: "Main command"
+    permission: "advancedcolor2.commands"
+    aliases: ["ac2"]
