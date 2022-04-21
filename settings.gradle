@@ -1,4 +1,4 @@
 rootProject.name = 'AdvancedColor2'
-include ':AdvancedColor2-api'
-include ':AdvancedColor2-plugin-spigot'
+include 'AdvancedColor2-api'
+include 'AdvancedColor2-plugin-spigot'
 
