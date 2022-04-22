@@ -1,6 +1,6 @@
 package com.nitkanikita.advancedcolor2.api.utils;
 
-import com.nitkanikita.advancedcolor2.api.CustomColor;
+import com.nitkanikita.advancedcolor2.api.types.CustomColor;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;

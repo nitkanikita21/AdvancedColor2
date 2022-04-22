@@ -1,8 +1,8 @@
 package com.nitkanikita.advancedcolor2.api.builders;
 
-import com.nitkanikita.advancedcolor2.api.CustomCharacter;
-import com.nitkanikita.advancedcolor2.api.CustomColor;
-import com.nitkanikita.advancedcolor2.api.CustomText;
+import com.nitkanikita.advancedcolor2.api.types.CustomCharacter;
+import com.nitkanikita.advancedcolor2.api.types.CustomColor;
+import com.nitkanikita.advancedcolor2.api.types.CustomText;
 import com.nitkanikita.advancedcolor2.api.utils.ColorUtils;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.nitkanikita.advancedcolor2.api;
+package com.nitkanikita.advancedcolor2.api.types;
 
 import com.google.common.primitives.Chars;
 import lombok.Getter;
@@ -12,13 +12,22 @@ public class CustomCharacter {
 
     public enum Code {
         ITALIC('o'),
-        BOLD('l');
-
+        BOLD('l'),
+        UNDERLINE('n'),
+        RESET('r'),
+        MAGIC('k'),
+        STRIKETHROUGH('m')
+        ;
 
         final char charCode;
 
         Code( char charCode) {
             this.charCode = charCode;
+        }
+
+        @Override
+        public String toString() {
+            return CustomCharacter.controlChar+""+charCode;
         }
 
         public int bit() {
@@ -69,11 +78,11 @@ public class CustomCharacter {
         this.symbol = symbol;
     }
 
-    public String getMinecraftString(){
-        return this.getMinecraftString(true);
+    public String toMinecraftString(){
+        return this.toMinecraftString(true);
     }
 
-    public String getMinecraftString(boolean addColor){
+    public String toMinecraftString(boolean addColor){
         StringBuilder s = new StringBuilder();
         if(addColor){
             s.append(controlChar)
@@ -89,6 +98,10 @@ public class CustomCharacter {
         s.append(symbol);
 
         return s.toString();
+    }
+
+    public String toPlainText(){
+        return symbol+"";
     }
 
 }

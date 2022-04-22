@@ -1,15 +1,19 @@
 package com.nitkanikita.advancedcolor2.spigot;
 
-import com.nitkanikita.advancedcolor2.api.CustomCharacter;
-import com.nitkanikita.advancedcolor2.api.CustomColor;
-import com.nitkanikita.advancedcolor2.api.CustomText;
+import com.nitkanikita.advancedcolor2.api.AdvancedColor2;
+import com.nitkanikita.advancedcolor2.api.animations.AnimationsManager;
+import com.nitkanikita.advancedcolor2.api.animations.anims.Rainbow;
+import com.nitkanikita.advancedcolor2.api.types.CustomCharacter;
+import com.nitkanikita.advancedcolor2.api.types.CustomColor;
+import com.nitkanikita.advancedcolor2.api.types.CustomText;
 import com.nitkanikita.advancedcolor2.api.builders.GradientTextBuilder;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import com.nitkanikita.advancedcolor2.api.platforms.SpigotPlatform;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.awt.*;
-import java.util.List;
+import java.util.logging.Logger;
+
 
 public class SpigotMain extends JavaPlugin {
     @Override
@@ -19,19 +23,67 @@ public class SpigotMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+
+        Logger logger = getLogger();
+        logger.info("");
+        logger.info("");
+        logger.info("  AdvancedColor2 Plugin "+getDescription().getVersion());
+        logger.info("#============================");
+        logger.info("| AC2 Library: "+ SpigotPlatform.getInstance().getDescription().getVersion());
+        logger.info("| ");
+        logger.info("| Visit https://github.com/nitkanikita21/AdvancedColor2");
+        logger.info("");
+        logger.info("");
+
+        AdvancedColor2.setup();
+        AdvancedColor2.setControlCharacter(ChatColor.COLOR_CHAR);
+
+        AnimationsManager.registerAnimation("AHTUNG",new Rainbow(CustomText.text("ATHUNG")));
+
         getCommand("advancedcolor2").setExecutor((sender, command, label, args) -> {
 
             String minecraftString = GradientTextBuilder.get()
-                    .addText(CustomText.text("Hello! Its my cool text. Do you like my gradient?", CustomCharacter.Code.ITALIC.bit() | CustomCharacter.Code.BOLD.bit()))
-                    .addColor(CustomColor.of(Color.MAGENTA))
+                    .addText(CustomText.text("Hello! Its my cool text. Do you like my gradient?", CustomCharacter.Code.ITALIC.bit()))
+                    .addColor(CustomColor.of(Color.CYAN))
                     .addColor(CustomColor.of(Color.GREEN))
-                    .addColor(CustomColor.of(Color.BLUE))
-                    .smooth(0.01)
+                    .addColor(CustomColor.of(Color.ORANGE))
+                    .smooth(0.03)
                     .generate()
-                    .getMinecraftString();
+                    .toMinecraftString();
 
-            sender.sendMessage(minecraftString);
+            sender.sendMessage("");
+            sender.sendMessage("");
 
+            sender.sendMessage(
+                    ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "-=" + ChatColor.DARK_GRAY + "[ " +
+                    ChatColor.BLUE + ChatColor.BOLD + getDescription().getName() +
+                    ChatColor.DARK_GRAY + " ]" + ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "=-"
+            );
+
+            sender.sendMessage(CustomText.text(
+                    "------------------------------",
+                    CustomCharacter.Code.STRIKETHROUGH.bit(),
+                    CustomColor.of(Color.DARK_GRAY)
+                    )+"");
+
+            String gradient = GradientTextBuilder.get()
+                    .addColor(CustomColor.of(Color.WHITE))
+                    .addColor(CustomColor.of(Color.GRAY))
+                    .smooth(0.2)
+                    .addText(CustomText.text("AC2 Library: "+ SpigotPlatform.getInstance().getDescription().getVersion()))
+                    .generate()
+                    .toMinecraftString();
+            sender.sendMessage(gradient);
+
+            sender.sendMessage("");
+            sender.sendMessage("");
+
+
+            return true;
+        });
+        getCommand("ac2test").setExecutor((sender, command, label, args) -> {
+            sender.sendMessage(AnimationsManager.getAnimation("AHTUNG").toMinecraftString());
             return true;
         });
     }

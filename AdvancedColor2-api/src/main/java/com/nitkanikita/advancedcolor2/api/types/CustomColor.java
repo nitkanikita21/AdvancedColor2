@@ -1,4 +1,4 @@
-package com.nitkanikita.advancedcolor2.api;
+package com.nitkanikita.advancedcolor2.api.types;
 
 import java.awt.*;
 import java.awt.color.ColorSpace;

@@ -1,6 +1,7 @@
 
 plugins {
     id 'java'
+    id 'net.minecrell.plugin-yml.bukkit' version '0.5.1'
 }
 
 group 'com.nitkanikita.advancedcolor2'
@@ -35,10 +36,29 @@ test {
 }
 
 jar {
-    destinationDir = file(System.getenv("BUILD_PATH") == null ? './output' : System.getenv("BUILD_PATH"))
-    baseName = 'AdvancedColor2'
+    destinationDir = file(System.getenv("BUILD_PATH") == null ? destinationDir.getPath() : System.getenv("BUILD_PATH"))
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+
+bukkit {
+    name = 'AdvancedColor2-Spigot'
+    main = 'com.nitkanikita.advancedcolor2.spigot.SpigotMain'
+    apiVersion = '1.16'
+    prefix = 'AdvancedColor 2'
+    depend = ['AdvancedColor2-Libary']
+    authors = ['NitkaNikita']
+    commands {
+        register("advancedcolor2") {
+            description = 'Main plugin command'
+            permission = 'advancedcolor2.commands'
+            aliases = ['ac2']
+        }
+        register("ac2test") {
+            description = 'haha'
+        }
+    }
 }
