@@ -46,5 +46,8 @@ public class CustomColor extends Color {
     public static CustomColor fromHEX(String hex){
         return new CustomColor(hex);
     }
+    public static CustomColor fromHSB(float h, float s, float b){
+        return of(Color.getHSBColor(h,s,b));
+    }
     public static CustomColor of(Color color){ return new CustomColor(color.getRGB()); }
 }

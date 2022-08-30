@@ -22,11 +22,17 @@ repositories {
     }
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+
+    maven {
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+
     mavenLocal()
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'me.clip:placeholderapi:2.11.1'
     implementation project(":AdvancedColor2-api")
 }
 
@@ -49,7 +55,7 @@ bukkit {
     main = 'com.nitkanikita.advancedcolor2.spigot.SpigotMain'
     apiVersion = '1.16'
     prefix = 'AdvancedColor 2'
-    depend = ['AdvancedColor2-Libary']
+    depend = ['AdvancedColor2-Libary', 'PlaceholderAPI']
     authors = ['NitkaNikita']
     commands {
         register("advancedcolor2") {

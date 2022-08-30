@@ -58,6 +58,10 @@ public class CustomCharacter {
         formatting ^= flag;
     }
 
+    public boolean checkFormatting(Code flag) {
+        return (formatting & flag.bit()) != 0;
+    }
+
     public CustomCharacter(char symbol) {
         this.symbol = symbol;
     }

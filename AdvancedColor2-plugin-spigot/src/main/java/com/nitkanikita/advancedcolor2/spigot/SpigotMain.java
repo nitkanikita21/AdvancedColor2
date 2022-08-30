@@ -8,7 +8,9 @@ import com.nitkanikita.advancedcolor2.api.types.CustomColor;
 import com.nitkanikita.advancedcolor2.api.types.CustomText;
 import com.nitkanikita.advancedcolor2.api.builders.GradientTextBuilder;
 import com.nitkanikita.advancedcolor2.api.platforms.SpigotPlatform;
+import com.nitkanikita.advancedcolor2.spigot.placeholders.TestPlaceholder;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.awt.*;
@@ -39,7 +41,10 @@ public class SpigotMain extends JavaPlugin {
         AdvancedColor2.setup();
         AdvancedColor2.setControlCharacter(ChatColor.COLOR_CHAR);
 
-        AnimationsManager.registerAnimation("AHTUNG",new Rainbow(CustomText.text("ATHUNG")));
+        AnimationsManager.registerAnimation("test",new Rainbow(CustomText.text(
+                "GAYBAR Billy Herrington",
+                CustomCharacter.Code.BOLD.bit()
+        ),3));
 
         getCommand("advancedcolor2").setExecutor((sender, command, label, args) -> {
 
@@ -82,10 +87,11 @@ public class SpigotMain extends JavaPlugin {
 
             return true;
         });
-        getCommand("ac2test").setExecutor((sender, command, label, args) -> {
-            sender.sendMessage(AnimationsManager.getAnimation("AHTUNG").toMinecraftString());
-            return true;
-        });
+
+        if(getServer().getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new TestPlaceholder().register();
+        }
+
     }
 
     @Override

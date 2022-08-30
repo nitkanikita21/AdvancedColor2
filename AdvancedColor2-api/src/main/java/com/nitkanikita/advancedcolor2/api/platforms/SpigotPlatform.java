@@ -32,7 +32,7 @@ public class SpigotPlatform extends JavaPlugin {
                 AnimationsManager.onTick(tickTimer);
                 tickTimer++;
             }
-        },0,1);
+        },0,0);
 
 
     }

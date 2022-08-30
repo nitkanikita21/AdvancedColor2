@@ -6,6 +6,7 @@ import com.nitkanikita.advancedcolor2.api.types.CustomText;
 import com.nitkanikita.advancedcolor2.api.utils.ColorUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,13 +21,18 @@ public class GradientTextBuilder implements CustomTextBuilder{
     private double smooth = 0;
     private final List<CustomText> texts = new ArrayList<>();
 
-    public GradientTextBuilder addColor(CustomColor color){
-        this.colors.add(color);
+    public GradientTextBuilder addColor(CustomColor... colors){
+        this.colors.addAll(Arrays.asList(colors));
         return this;
     }
 
     public GradientTextBuilder addText(CustomText text){
         this.texts.add(text);
+        return this;
+    }
+
+    public GradientTextBuilder addText(String text){
+        this.texts.add(CustomText.text(text));
         return this;
     }
 

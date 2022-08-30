@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.nitkanikita.advancedcolor2'
-version '2.1-BETA'
+version '2.1.0-BETA'
 
 repositories {
     mavenCentral()
@@ -17,6 +17,22 @@ repositories {
         content {
             includeGroup 'org.bukkit'
             includeGroup 'org.spigotmc'
+        }
+    }
+}
+
+publishing {
+    publications {
+    }
+    repositories {
+        maven {
+            name = "snapshots" //  optional target repository name
+            url = "http://18.194.179.84:8080/snapshots"
+            allowInsecureProtocol = true
+            credentials {
+                username = System.getenv("USER")
+                password = System.getenv("PASS")
+            }
         }
     }
 }
