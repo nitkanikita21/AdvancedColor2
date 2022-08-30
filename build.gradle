@@ -1,40 +1,31 @@
+import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 plugins {
     id 'java'
+    id 'maven-publish'
+    id("net.minecrell.plugin-yml.bukkit") version "0.5.2"
 }
 
 group = 'com.nitkanikita.advancedcolor2'
 version '1.0-SNAPSHOT'
 
-subprojects {
-    apply plugin: 'java'
 
-    repositories {
-        mavenCentral()
-
-        maven { url = 'https://jitpack.io' }
-
-        maven {
-            url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
-        }
-        maven {
-            url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-
-            // As of Gradle 5.1, you can limit this to only those
-            // dependencies you expect from it
-            content {
-                includeGroup 'org.bukkit'
-                includeGroup 'org.spigotmc'
-            }
-        }
-        maven {
-            name 'sonatype'
-            url 'https://oss.sonatype.org/content/groups/public/'
-        }
-        maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
-        maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+repositories {
+    mavenCentral()
+    maven { url = 'https://jitpack.io' }
+    maven {
+        url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
     }
+    maven {
+        name 'sonatype'
+        url 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+}
 
     dependencies {
+        compileOnly "io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT"
 
         compileOnly 'org.projectlombok:lombok:1.18.22'
         annotationProcessor 'org.projectlombok:lombok:1.18.22'
@@ -46,7 +37,6 @@ subprojects {
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     }
-}
 
 test {
     useJUnitPlatform()
@@ -76,4 +66,22 @@ compileJava.options.encoding = 'UTF-8'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+bukkit {
+    load = BukkitPluginDescription.PluginLoadOrder.STARTUP
+    name = 'AdvancedColor2-Libary'
+    main = 'com.nitkanikita.advancedcolor2.api.platforms.SpigotPlatform'
+    apiVersion = '1.16'
+    prefix = 'AC2 Libary'
+
+    authors = ['NitkaNikita']
 }
